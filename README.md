@@ -18,3 +18,27 @@ But after returning the space `foo()` used for `bar` is not owned by foo anymore
 Compile with `gcc -g -O0 -D_FORTIFY_SOURCE=0 -fno-stack-clash-protection  -fno-stack-protector -std=c99 -o return_local return_local.c`.
 
 Run with `./return_local`:
+
+---
+
+## expected output
+
+```
+num: 256
+num: 257
+num: 258
+num: 256
+num: 257
+num: 258
+```
+
+## actual output
+
+```
+num: 256
+num: 257
+num: 258
+num: 128
+num: 129
+num: 130
+```
